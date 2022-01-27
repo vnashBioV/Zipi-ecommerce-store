@@ -1,0 +1,40 @@
+.help-icon{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.8px solid;
+    border-radius: 100%;
+    padding: 10px;
+    font-size: 9px;
+    color: white;
+}
+.navlist{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.navlist li{
+    list-style: none;
+    width: 8%;
+}
+
+.search-con > a > img{
+    width: 100%;
+    display: block;
+}
+.nav-container > div{
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.favorite-icon{
+    font-size: 21px;
+}

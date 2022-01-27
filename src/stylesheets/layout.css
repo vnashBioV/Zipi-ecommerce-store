@@ -1,0 +1,36 @@
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+.content{
+    padding-top: 80px;
+    max-width: 1000px;
+    margin: auto;
+}
+.navbar{
+    background: #333333 !important;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: auto;
+}
+.nav-container{
+    height: 82px;
+    background: #2a2727;
+    position: fixed;
+    top: 0;
+    margin: auto;
+    width: 100%;
+    max-width: 1667px;
+}
+.nav-link{
+    color: #fff !important;
+}
+.navbar-brand img{
+    width: 18%;
+    height: 100%;
+    display: block;
+}

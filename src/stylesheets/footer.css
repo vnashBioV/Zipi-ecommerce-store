@@ -1,0 +1,42 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: auto;
+    line-height: 34px;
+    margin-top: 69px;
+}
+.footer div:nth-child(1) img{
+    width: 32%;
+    display: block;
+    margin-bottom: 15px;
+}
+.footer > div{
+    width: calc(100%/3);
+}
+
+.footer > div ul li{
+    font-style: normal;
+    list-style: none;
+}
+
+.footer > div ul li a{
+    font-style: normal;
+    text-decoration: none;
+    color: grey;
+    transition: .5s all;
+}
+.footer > div ul li a:hover{
+    color: #bfbf69;
+}
+.footer > div h1{
+    font-size: 17px;
+    font-weight: bold;
+}
+.footer > div ul li a i{
+    font-size: 25px;
+}
+.footer > div:nth-child(1) > ul{
+    padding-left: 0px;
+}
+
