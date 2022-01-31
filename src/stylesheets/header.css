@@ -23,8 +23,12 @@
     width: 8%;
 }
 
+.navlist li:last-of-type{
+    width: 15% !important;
+}
+
 .search-con > a > img{
-    width: 100%;
+    width: 88%;
     display: block;
 }
 .nav-container > div{
@@ -37,4 +41,15 @@
 }
 .favorite-icon{
     font-size: 21px;
+}
+.cart img{
+    width: 35px;
+    height: 35px;
+}
+.login-btn{
+    background: #efd504;
+    width: 98px;
+    height: 38px;
+    border-radius: 10px;
+    color: black !important;
 }

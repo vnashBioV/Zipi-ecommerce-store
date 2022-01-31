@@ -1,6 +1,7 @@
 .home > div{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 15px;
+    margin-bottom: 20px;
 }
 .on-sale > div{
     display: flex;
@@ -11,4 +12,14 @@
 .on-sale > p{
     padding: 10px 20px 0;
     margin: 0;
+}
+.brands{
+    height: 51px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center; 
+}
+.home-banner{
+    height: 350px;
+    width: 100%;
 }

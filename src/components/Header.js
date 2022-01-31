@@ -2,7 +2,9 @@ import React from 'react'
 import logo from '../images/logo.png'; 
 import { Link } from 'react-router-dom'; 
 import '../stylesheets/header.css'
-import searchIcon from '../images/search-interface-symbol.png'
+import searchIcon from '../images/search-interface-symbol.png';
+import carticon from '../images/cart-icon.png'
+import profilepic from '../images/user.png'
 
 export default function Header() {
     return (
@@ -19,8 +21,11 @@ export default function Header() {
                     <li className="nav-item">
                         <Link className="nav-link favorite-icon" to="/"><i class="far fa-heart"></i></Link>
                     </li>
+                    <li className="nav-item cart" id='cart'>
+                        <Link className="nav-link" to="/"><img src={carticon} alt="" /> </Link>
+                    </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">Cart</Link>
+                        <Link className="nav-link login-btn" to="/">Login</Link>
                     </li>
                 </ul>
             </div>

@@ -6,7 +6,6 @@
     z-index: 2;
 }
 .content{
-    padding-top: 80px;
     max-width: 1000px;
     margin: auto;
 }
@@ -19,18 +18,27 @@
 }
 .nav-container{
     height: 82px;
-    background: #2a2727;
+    background: #333333;
     position: fixed;
     top: 0;
     margin: auto;
     width: 100%;
-    max-width: 1667px;
+    z-index: 999;
 }
 .nav-link{
-    color: #fff !important;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .navbar-brand img{
     width: 18%;
     height: 100%;
     display: block;
+}
+.profile-image img{
+   width: 55px;
+   height: 55px;
+   display: block; 
+   margin-left: 10px;
 }

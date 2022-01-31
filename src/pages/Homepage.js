@@ -5,6 +5,7 @@ import fireDB from '../fireConfig';
 import { fireproducts } from '../firecommerce-products';
 import {useNavigate} from 'react-router-dom';
 import '../stylesheets/homepage.css'
+import Slider from '../components/Slider/Slider'
 
 export default function Homepage() {
 
@@ -54,6 +55,10 @@ export default function Homepage() {
             
             
             <div className="container home">
+                    <div className='home-banner'>
+                        <Slider />
+                    </div>
+                    <div className='brands'></div>
                     <div className='on-sale'>
                         <p><b>On sale</b></p>
                         <div>
