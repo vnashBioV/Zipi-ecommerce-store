@@ -15,6 +15,7 @@
 .products-details > div{
     padding: 10px;
     height: 249px;
+    position: relative;
 }
 
 .products-details > div:hover{
@@ -23,7 +24,8 @@
 
 .products-details h3{
     font-size: 12px;
-    line-height: 21px;
+    line-height: 18px;
+    margin-top: 5px;
 }
 .products-details > div > p > i{
     color: #f2f21a;

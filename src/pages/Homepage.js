@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom';
 import '../stylesheets/homepage.css'
 import Slider from '../components/Slider/Slider'
 import SlidingLogos from '../components/SlidingLogos'
+import discount from '../images/discount.png'
 
 export default function Homepage() {
 
@@ -72,15 +73,68 @@ export default function Homepage() {
                                         navigate(`/productinfo/${product.id}`)
                                     }}>
                                         <img src={product.imageURL} alt="" className='product-img'/>
+                                        <i class="far fa-heart item-fav"></i>
                                         <h3>{product.name}</h3>
                                         <b>{product.price}</b>
+                                        <p className='initial-price'>R1234</p>
+                                        <div className='discount'>
+                                            <img src={discount} alt="" />
+                                        </div>
                                         <p><i className="fas fa-star"></i><span>{product.rating}</span></p>
                                     </div>
                                 </div>
                             })}
                         </div>
-                        
                     </div>
+            
+                    <div className='lifestyle-shopping'>
+                        <div>
+                            <h1>Lifestyle shopping for less</h1>
+                            <a href="shop-essential">Shop Essentials</a>
+                        </div>
+                        <div className='essentials'>
+                            <div>
+                                {products.map((product, i) =>{
+                                    return <div key={i} className='products-details'>
+                                        <div onClick={() => {
+                                            navigate(`/productinfo/${product.id}`)
+                                        }}>
+                                            <img src={product.imageURL} alt="" className='product-img'/>
+                                            <i class="far fa-heart item-fav"></i>
+                                            <h3>{product.name}</h3>
+                                            <b>{product.price}</b>
+                                            <p><i className="fas fa-star"></i><span>{product.rating}</span></p>
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className='lifestyle-shopping'>
+                        <div>
+                            <h1>Deals to get you going</h1>
+                            <a href="shop-essential">Shop all deals</a>
+                        </div>
+                        <div className='essentials'>
+                            <div>
+                                {products.map((product, i) =>{
+                                    return <div key={i} className='products-details'>
+                                        <div onClick={() => {
+                                            navigate(`/productinfo/${product.id}`)
+                                        }}>
+                                            <img src={product.imageURL} alt="" className='product-img'/>
+                                            <i class="far fa-heart item-fav"></i>
+                                            <h3>{product.name}</h3>
+                                            <b>{product.price}</b>
+                                            <p><i className="fas fa-star"></i><span>{product.rating}</span></p>
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                    
             </div>
         </Layout>
     )

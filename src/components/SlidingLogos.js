@@ -20,7 +20,7 @@ export default function SlidingLogos() {
   return (
     <>
       <div className="sliding">
-        <Carousel breakPoints={breakPoints}>
+        <Carousel enableAutoPlay breakPoints={breakPoints}>
           <Item><img src={logoone} alt="" className="item-img" width={175} height={47}/></Item>
           <Item><img src={logotwo} alt="" className="item-img" width={175} height={47}/></Item>
           <Item><img src={logothree} alt="" className="item-img" width={175} height={47}/></Item>

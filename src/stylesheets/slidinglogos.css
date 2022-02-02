@@ -34,3 +34,13 @@
     width: 100% !important;
     height: 100% !important;
 }
+
+.rec.rec-arrow {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-size: 16px !important;
+}
+.rec.rec-arrow:hover {
+    color: #9e9c9c !important;
+}
