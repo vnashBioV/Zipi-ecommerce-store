@@ -1,0 +1,36 @@
+.sliding {
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+  }
+.rec-pagination{
+    display: none !important;
+}
+.jRFJkP{
+    box-shadow: unset !important;
+    font-size: 16px !important;
+    background-color: transparent !important;
+}
+.jRFJkP:hover:enabled, .jRFJkP:focus:enabled{
+    color: #000 !important;
+}
+.cNNJIt{
+    background-color: unset !important;
+    color: grey !important;
+    box-shadow:unset !important;
+    font-size: 17px !important;
+}
+.la-DnRx{
+    background-color: unset !important;
+}
+.izuVIe{
+    width: 175px !important;
+    height: 47px !important;
+}
+.item-img{
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+}
