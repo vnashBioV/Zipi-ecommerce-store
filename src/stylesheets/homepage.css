@@ -61,7 +61,7 @@
 .lifestyle-shopping > div, .shopping-deals > div{
     height: 281px;
 }
-.lifestyle-shopping > div:nth-child(1), .shop-deals > div:nth-child(1){
+.lifestyle-shopping > div:nth-child(1){
     background: url(../images//lifestyle-lede.png)no-repeat;
     background-size: cover;
     border-radius: 15px 15px 0px 0px;
@@ -70,6 +70,26 @@
     align-items: center;
     color: #fff;
     flex-direction: column;
+}
+.deals{
+    background: url(../images/deals.png)no-repeat !important;
+    background-size: cover !important;
+    position: relative;
+    border-radius: 15px 15px 0px 0px !important;
+    z-index: 1;
+}
+.deals::before{ 
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .39);
+    border-radius: inherit;
+    z-index: -1;
 }
 .shop-deals > div:nth-child(1){
     background: url(../images//deals.png)no-repeat;

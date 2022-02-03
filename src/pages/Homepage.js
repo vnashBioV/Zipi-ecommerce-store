@@ -112,7 +112,7 @@ export default function Homepage() {
                     </div>
                     
                     <div className='lifestyle-shopping'>
-                        <div>
+                        <div className='deals'>
                             <h1>Deals to get you going</h1>
                             <a href="shop-essential">Shop all deals</a>
                         </div>
