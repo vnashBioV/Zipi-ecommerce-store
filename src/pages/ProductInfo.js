@@ -3,12 +3,19 @@ import Layout from '../components/Layout'
 import { getDoc, doc } from "firebase/firestore"; 
 import fireDB from '../fireConfig';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function ProductInfo() {
 
     const [ product, setProduct ] = useState(); 
     //Used for when you are creating navigational components 
     const params = useParams();
+
+    //import the cart items
+    const {cartItems} = useSelector(state=>state.cartReducer)
+
+    //To dispatch the redux action
+    const dispatch = useDispatch();
 
     useEffect(() => {
         //Calling the function on component mount
@@ -28,9 +35,18 @@ export default function ProductInfo() {
         }
     }
 
+    //Whenever the cartItems is changed, write to local storage
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems))
+    }, [cartItems]);
+    
+    const addToCart = (product) =>{
+        dispatch({type:'ADD_TO_CART', payload:product});
+    }
+
     return (
         <Layout>
-            {product && (<div>
+            {product && (<div className='product-wrap'>
                 <div className='product-info-container'>
                     <div>
                         <div className='view-image'>
@@ -45,11 +61,11 @@ export default function ProductInfo() {
                         <hr  className='bottom-underline'/>
                         <div>
                             <span>
-                                <h1>R45 999.99</h1>
+                                <h1>R {product.price}</h1>
                                 <h3 className='crossed-out'>R48 999.99</h3>
                             </span>
                             <i class="far fa-heart fav"></i>
-                            <button className='add-cart'>Add to cart</button>
+                            <button className='add-cart'onClick={()=> addToCart(product)}>Add to cart</button>
                         </div>
                     </div>
                     <div className='product-info-right-block'>

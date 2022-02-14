@@ -1,0 +1,119 @@
+.cart-container{
+    background: #fff;
+    border-radius: 10px;
+    margin-top: 108px;
+    margin-bottom: 15px;
+}
+.cart-item-header, .cart-item-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.cart-item-container > div{
+    font-size: 13px;
+}
+.cart-item-container > div:not(.cart-item-container > div:nth-child(1)){
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-header, .cart-item-container{
+    border-bottom: 2px solid #e9e9e9;
+}
+.cart-item-header > div, .cart-item-container > div{
+    width: calc(100%/4);
+    padding: 5px;
+}
+.cart-item-header > div{
+    font-weight: bold;
+    font-size: 13px;
+}
+.cart-item-container > div:nth-child(3) p{
+    font-weight: bold;
+}
+.cart-item-container > div:nth-child(4) i{
+   cursor: pointer;
+}
+.cart-item-header{
+    background: #efd504;
+}
+.cart-item-header > div:nth-child(3), .cart-item-container > div:nth-child(3){
+    display: flex;
+    justify-content: center;
+}
+.continue-shopping{
+    background: #efd504;
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.continue-shopping:hover{
+    color: #000;
+    opacity: .7;
+}
+.continue-container{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+.remove-item-cart{
+    color: #948617;
+    text-decoration: none;
+}
+.remove-item-cart:hover{
+    color: rgb(94, 94, 94);
+}
+.order-summary, .order-summary h1{
+    font-size: 16px;
+}
+.order-summary{
+    position: absolute;
+    width: 255px;
+    background: #fff;
+    top: 17.6%;
+    left: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+.summary-header > div > p, .summary-header > div > h1{
+    margin: 0;
+    padding: 0;
+}
+.summary-header, .subtotal, .total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: bold;
+    height: 48px;
+    border-bottom: 2px solid #d8d8d8;
+}
+.subtotal{
+    font-weight: normal;
+}
+.subtotal h1, .total h1{
+    font-size: 12px;
+    font-weight: 900;
+} 
+.checkout{
+    border: none;
+    width: 165px;
+    padding: 10px;
+    background: #efd504;
+    font-size: 12px;
+    border-radius: 10px;
+}  
+.checkout-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    margin-top: 10px;
+}
+.cart-container > div:nth-child(3){
+    min-height: 217px;
+}

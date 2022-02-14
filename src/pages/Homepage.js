@@ -41,20 +41,20 @@ export default function Homepage() {
         }
     }
 
-    // //FUNCTION: Add products to firestore
-    // function addProductsData(){
-    //     fireproducts.map(async (product) =>{
-    //         try {
-    //             await addDoc(collection(fireDB, "products"), product);
-    //         } catch (error) {
-    //             console.log(error)
-    //         } 
-    //     })
-    // }
+    //FUNCTION: Add products to firestore
+    function addProductsData(){
+        fireproducts.map(async (product) =>{
+            try {
+                await addDoc(collection(fireDB, "products"), product);
+            } catch (error) {
+                console.log(error)
+            } 
+        })
+    }
 
     return (
         <Layout>
-            
+            <>
             
             <div className="container home">
                     <div className='home-banner'>
@@ -66,6 +66,7 @@ export default function Homepage() {
                     </div>
                     <div className='on-sale'>
                         <p><b>On sale</b></p>
+                        {/* <button onClick={addProductsData}>add data</button> */}
                         <div>
                             {products.map((product, i) =>{
                                 return <div key={i} className='products-details'>
@@ -75,7 +76,7 @@ export default function Homepage() {
                                         <img src={product.imageURL} alt="" className='product-img'/>
                                         <i class="far fa-heart item-fav"></i>
                                         <h3>{product.name}</h3>
-                                        <b>{product.price}</b>
+                                        <b>R {product.price}</b>
                                         <p className='initial-price'>R1234</p>
                                         <div className='discount'>
                                             <img src={discount} alt="" />
@@ -102,7 +103,7 @@ export default function Homepage() {
                                             <img src={product.imageURL} alt="" className='product-img'/>
                                             <i class="far fa-heart item-fav"></i>
                                             <h3>{product.name}</h3>
-                                            <b>{product.price}</b>
+                                            <b>R {product.price}</b>
                                             <p><i className="fas fa-star"></i><span>{product.rating}</span></p>
                                         </div>
                                     </div>
@@ -134,8 +135,22 @@ export default function Homepage() {
                             </div>
                         </div>
                     </div>
+
+                    <div className='sell-on-zipi'>
+                        <div>
+                            <h1>Sell on Zipi</h1>
+                            <p>
+                                Earn by becoming a reseller with Zipi Now. <br />
+                                Earn on every purchase and get live updates on your
+                                sales to scale up and get access to free analytics
+                            </p>
+                            <a href="#">Learn more</a>
+                        </div>
+                    </div>
                     
             </div>
+
+            </>
         </Layout>
     )
 }

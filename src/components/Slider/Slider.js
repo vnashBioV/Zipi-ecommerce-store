@@ -19,7 +19,7 @@ export default function Slider() {
 
     //Auto slide
     useEffect(() => {
-      const handle = setInterval(nextSlide, 4000);
+      const handle = setInterval(nextSlide, 6000);
         
       return ()=>{
         clearInterval(handle);

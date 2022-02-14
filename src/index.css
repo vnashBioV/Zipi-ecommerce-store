@@ -1,9 +1,10 @@
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-top: 86px;
+  margin-top: 93px;
+  background: #ededed;
 }
 
 code {

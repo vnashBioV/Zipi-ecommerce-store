@@ -1,6 +1,6 @@
 export const fireproducts = [
     {
-        "price": "R600",
+        "price": "600",
         "description": "Morbi purus libero, faucibus adipiscing, commodo quis, gravida",
         "name": "Canon – EOS 5D Mark IV DSLR Camera",
         "category":"electronics",
@@ -9,7 +9,7 @@ export const fireproducts = [
     },
 
     {
-        "price": "R120",
+        "price": "120",
         "description": "Morbi purus libero, faucibus adipiscing, commodo quis, gravida",
         "name": "Home Smart Speaker with Google Assistant",
         "category":"electronics",
@@ -17,7 +17,7 @@ export const fireproducts = [
         "rating": 4.5
     },
     {
-        "price": "R300",
+        "price": "300",
         "description": "Morbi purus libero, faucibus adipiscing, commodo quis, gravida",
         "name": "Apple – Watch Series 3 with White Sport Band",
         "category":"electronics",
@@ -26,7 +26,7 @@ export const fireproducts = [
     },
 
     {
-        "price": "R420",
+        "price": "420",
         "description": "Morbi purus libero, faucibus adipiscing, commodo quis, gravida",
         "name": "Apple – 11” iPad Pro with Wi-Fi 256 GB",
         "category":"electronics",
@@ -34,7 +34,7 @@ export const fireproducts = [
         "rating": 3.2
     },
     {
-        "price": "R500",
+        "price": "500",
         "description": "Morbi purus libero, faucibus adipiscing, commodo quis, gravida",
         "name": "Carronade Table Lamp",
         "category":"electronics",
@@ -43,7 +43,7 @@ export const fireproducts = [
     },
 
     {
-        "price": "R220",
+        "price": "220",
         "description": "Morbi purus libero, faucibus adipiscing, commodo quis, gravida",
         "name": "Carronade Large Suspension Lamp",
         "category":"electronics",

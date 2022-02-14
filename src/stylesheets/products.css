@@ -43,9 +43,14 @@
 .product-info-img{
     display: block;
     width: 100%;
+    height: 376px;
 }
 .product-info-container{
     display: flex;
+}
+.product-wrap{
+    margin: 38px 0;
+    margin-top: 169px;
 }
 .product-info-container > div:first-of-type{
     padding: 52px 52px 0px;
@@ -54,6 +59,7 @@
     margin-right: 26px;
     display: flex;
     flex-direction: column;
+    background: #fff;
 }
 .product-info-container > div{
     width: 48%;
@@ -68,6 +74,7 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     margin-bottom: 10px;
     padding: 12px;
+    background: #fff;
 }
 .stroke{
     color: #9c9898 !important;
@@ -80,7 +87,7 @@
 }
 .product-thumb > div{
     width: 23%;
-    height: 100px;
+    height: 86px;
     background: blue;
 }
 .view-image{
