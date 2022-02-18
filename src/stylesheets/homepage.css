@@ -1,5 +1,4 @@
 .home > div{
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 15px;
     margin-bottom: 20px;
     background-color: #fff;
@@ -206,4 +205,8 @@
     border-radius: 0px 10px 10px 0px;
     font-size: 12px;
     font-weight: bold;
+}
+.carousel{
+    cursor: grab;
+    overflow: hidden;
 }

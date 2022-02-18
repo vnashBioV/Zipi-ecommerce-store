@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Layout from '../components/Layout';
 import { collection, addDoc, getDocs } from "firebase/firestore"; 
 import fireDB from '../fireConfig';
@@ -8,6 +8,7 @@ import '../stylesheets/homepage.css'
 import Slider from '../components/Slider/Slider'
 import SlidingLogos from '../components/SlidingLogos'
 import discount from '../images/discount.png'
+import {motion} from 'framer-motion';
 
 export default function Homepage() {
 
@@ -15,6 +16,16 @@ export default function Homepage() {
     const [ products, setProducts ] = useState([]);
     //Use useNavigate from react-router-dom to navigate to the product info  
     const navigate = useNavigate();
+    //Loader
+    const [loading, setLoading] = useState(false);
+
+    const [width, setWidth] = useState(0);
+    const carousel = useRef();
+
+    useEffect(() => {
+      setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
+    }, [])
+    
 
     useEffect(() => {
         //Calling the function on component mount
@@ -23,7 +34,9 @@ export default function Homepage() {
 
     //FUNCTION: get data from firestore, grab that data and put it in a state setProducts
     async function getData(){
+        setLoading(true);
         try {
+            setLoading(true);
             const products = await getDocs(collection(fireDB, "products"));
             //we will store the products in this array
             const productsArray = [];
@@ -33,11 +46,13 @@ export default function Homepage() {
                     ...doc.data()
                 }
             productsArray.push(obj)
+            setLoading(false);
             });
             //Putting the product data in the state, setProducts then we can use the products to get the data
             setProducts(productsArray);
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            setLoading(false);
         }
     }
 
@@ -53,7 +68,7 @@ export default function Homepage() {
     }
 
     return (
-        <Layout>
+        <Layout loading={loading}>
             <>
             
             <div className="container home">
@@ -64,13 +79,13 @@ export default function Homepage() {
                         <h1>Shop brands</h1>
                         <SlidingLogos/>
                     </div>
-                    <div className='on-sale'>
+                    <motion.div className='on-sale carousel' ref={carousel} whileTap={{cursor:"grabbing"}}>
                         <p><b>On sale</b></p>
                         {/* <button onClick={addProductsData}>add data</button> */}
-                        <div>
+                        <motion.div className='inner-carousel' drag="x" dragConstraints={{right : 0, left: -width}}>
                             {products.map((product, i) =>{
-                                return <div key={i} className='products-details'>
-                                    <div onClick={() => {
+                                return <motion.div key={i}  className='products-details'>
+                                    <motion.div onClick={() => {
                                         navigate(`/productinfo/${product.id}`)
                                     }}>
                                         <img src={product.imageURL} alt="" className='product-img'/>
@@ -82,34 +97,38 @@ export default function Homepage() {
                                             <img src={discount} alt="" />
                                         </div>
                                         <p><i className="fas fa-star"></i><span>{product.rating}</span></p>
-                                    </div>
-                                </div>
+                                    </motion.div>
+                                </motion.div>
                             })}
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
             
                     <div className='lifestyle-shopping'>
                         <div>
                             <h1>Lifestyle shopping for less</h1>
                             <a href="shop-essential">Shop Essentials</a>
                         </div>
-                        <div className='essentials'>
-                            <div>
+                        <motion.div className='essentials carousel' ref={carousel} whileTap={{cursor:"grabbing"}}>
+                            {/* <button onClick={addProductsData}>add data</button> */}
+                            <motion.div className='inner-carousel' drag="x" dragConstraints={{right : 0, left: -width}}>
                                 {products.map((product, i) =>{
-                                    return <div key={i} className='products-details'>
-                                        <div onClick={() => {
+                                    return <motion.div key={i}  className='products-details'>
+                                        <motion.div onClick={() => {
                                             navigate(`/productinfo/${product.id}`)
                                         }}>
                                             <img src={product.imageURL} alt="" className='product-img'/>
                                             <i class="far fa-heart item-fav"></i>
                                             <h3>{product.name}</h3>
                                             <b>R {product.price}</b>
+                                            <p className='initial-price'>R1234</p>
+                                            <div className='discount'>
+                                            </div>
                                             <p><i className="fas fa-star"></i><span>{product.rating}</span></p>
-                                        </div>
-                                    </div>
+                                        </motion.div>
+                                    </motion.div>
                                 })}
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     </div>
                     
                     <div className='lifestyle-shopping'>
@@ -117,23 +136,27 @@ export default function Homepage() {
                             <h1>Deals to get you going</h1>
                             <a href="shop-essential">Shop all deals</a>
                         </div>
-                        <div className='essentials'>
-                            <div>
+                        <motion.div className='essentials carousel' ref={carousel} whileTap={{cursor:"grabbing"}}>
+                            {/* <button onClick={addProductsData}>add data</button> */}
+                            <motion.div className='inner-carousel' drag="x" dragConstraints={{right : 0, left: -width}}>
                                 {products.map((product, i) =>{
-                                    return <div key={i} className='products-details'>
-                                        <div onClick={() => {
+                                    return <motion.div key={i}  className='products-details'>
+                                        <motion.div onClick={() => {
                                             navigate(`/productinfo/${product.id}`)
                                         }}>
                                             <img src={product.imageURL} alt="" className='product-img'/>
                                             <i class="far fa-heart item-fav"></i>
                                             <h3>{product.name}</h3>
-                                            <b>{product.price}</b>
+                                            <b>R {product.price}</b>
+                                            <p className='initial-price'>R1234</p>
+                                            <div className='discount'>
+                                            </div>
                                             <p><i className="fas fa-star"></i><span>{product.rating}</span></p>
-                                        </div>
-                                    </div>
+                                        </motion.div>
+                                    </motion.div>
                                 })}
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     </div>
 
                     <div className='sell-on-zipi'>

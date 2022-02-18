@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, {useRef, useEffect, useState } from 'react'
 import Layout from '../components/Layout'
 import { getDoc, doc } from "firebase/firestore"; 
 import fireDB from '../fireConfig';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import productdiscountimg from '../images/product-discount.png'
+import {motion} from 'framer-motion';
+import { collection, addDoc, getDocs } from "firebase/firestore"; 
+import {useNavigate} from 'react-router-dom';
+
 
 export default function ProductInfo() {
 
@@ -17,9 +22,20 @@ export default function ProductInfo() {
     //To dispatch the redux action
     const dispatch = useDispatch();
 
+    //state to put/set product data
+    const [ products, setProducts ] = useState([]);
+    //Use useNavigate from react-router-dom to navigate to the product info  
+    const navigate = useNavigate();
+    //Loader
+    const [loading, setLoading] = useState(false);
+
+    const [width, setWidth] = useState(0);
+    const carousel = useRef();
+
+
     useEffect(() => {
         //Calling the function on component mount
-        getData();    
+        getAllData();    
     }, [])
 
     //FUNCTION: get data from firestore, grab that data and put it in a state setProducts
@@ -35,11 +51,42 @@ export default function ProductInfo() {
         }
     }
 
+    //FUNCTION: get all products
+    async function getAllData(){
+        setLoading(true);
+        try {
+            setLoading(true);
+            const products = await getDocs(collection(fireDB, "products"));
+            //we will store the products in this array
+            const productsArray = [];
+            products.forEach((doc) => {
+                const obj={
+                    id:doc.id,
+                    ...doc.data()
+                }
+            productsArray.push(obj)
+            setLoading(false);
+            });
+            //Putting the product data in the state, setProducts then we can use the products to get the data
+            setProducts(productsArray);
+        } catch (error) {
+            console.log(error);
+            setLoading(false);
+        }
+    }
+
+    useEffect(() => {
+        //Calling the function on component mount
+        getData()  
+    }, [])
+
     //Whenever the cartItems is changed, write to local storage
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }, [cartItems]);
     
+    
+
     const addToCart = (product) =>{
         dispatch({type:'ADD_TO_CART', payload:product});
     }
@@ -47,8 +94,10 @@ export default function ProductInfo() {
     return (
         <Layout>
             {product && (<div className='product-wrap'>
-                <div className='product-info-container'>
+                <div>
+                    <div className='product-info-container'>
                     <div>
+                        <img src={productdiscountimg} className="product-discount-img" alt="" />
                         <div className='view-image'>
                             <img src={product.imageURL} alt='' className='product-info-img'/>
                         </div>
@@ -58,15 +107,7 @@ export default function ProductInfo() {
                             <div></div>
                             <div></div>
                         </div>
-                        <hr  className='bottom-underline'/>
-                        <div>
-                            <span>
-                                <h1>R {product.price}</h1>
-                                <h3 className='crossed-out'>R48 999.99</h3>
-                            </span>
-                            <i class="far fa-heart fav"></i>
-                            <button className='add-cart'onClick={()=> addToCart(product)}>Add to cart</button>
-                        </div>
+                        
                     </div>
                     <div className='product-info-right-block'>
                         <div className='prod-name'>
@@ -85,8 +126,51 @@ export default function ProductInfo() {
                                 the actual color of the phone may be slightly different from the screen and pictures. 
                                 The color name is only used to distinguish each SKU. Please understand that</p>
                         </div>
+                        <div>
+                            <div className='product-tag'>
+                                <p>About product</p>  
+                                <p>BRAND</p>   
+                                <p>PRODUCT NAME</p>   
+                                <p>COLOR</p>   
+                                <p>SKU</p>   
+                                <p>TAGS</p>   
+                            </div>
+                            <div className='product-info-price'>
+                                <span>
+                                    <h1>R {product.price}</h1>
+                                    <h3 className='crossed-out'>R48 999.99</h3>
+                                </span>
+                                <i class="far fa-heart fav"></i>
+                                <button className='add-cart'onClick={()=> addToCart(product)}>Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div className='recomended-prod'>
+                    <motion.div className='essentials carousel' ref={carousel} whileTap={{cursor:"grabbing"}}>
+                            {/* <button onClick={addProductsData}>add data</button> */}
+                            <motion.div className='inner-carousel recommended-carousel' drag="x" dragConstraints={{right : 0, left: -width}}>
+                                {products.map((product, i) =>{
+                                    return <motion.div key={i}  className='recomended-details'>
+                                        <motion.div onClick={() => {
+                                            navigate(`/productinfo/${product.id}`)
+                                        }}>
+                                            <img src={product.imageURL} alt="" className='product-img'/>
+                                            <i class="far fa-heart item-fav"></i>
+                                            <h3>{product.name}</h3>
+                                            <b>R {product.price}</b>
+                                            <p className='initial-price'>R1234</p>
+                                            <div className='discount'>
+                                            </div>
+                                            <p><i className="fas fa-star"></i><span>{product.rating}</span></p>
+                                        </motion.div>
+                                    </motion.div>
+                                })}
+                            </motion.div>
+                        </motion.div>
                     </div>
                 </div>
+                
             </div>)}
         </Layout>
     )
