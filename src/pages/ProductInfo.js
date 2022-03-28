@@ -40,14 +40,17 @@ export default function ProductInfo() {
 
     //FUNCTION: get data from firestore, grab that data and put it in a state setProducts
     async function getData(){
+        setLoading(true);
         try {
             //This is how you get product info using productid through useparams
             const productTemp = await getDoc(doc(fireDB, "products", params.productid));
             //Putting the product data in the state, setProducts then we can use the product var to get the data
             console.log(productTemp)
             setProduct(productTemp.data());
+            setLoading(false);
         } catch (error) {
             console.log(error)
+            setLoading(false);
         }
     }
 
@@ -92,86 +95,89 @@ export default function ProductInfo() {
     }
 
     return (
-        <Layout>
-            {product && (<div className='product-wrap'>
-                <div>
-                    <div className='product-info-container'>
+        <Layout loading={loading}>
+            <div className='container-info'>
+                {product && (<div className='product-wrap'>
                     <div>
-                        <img src={productdiscountimg} className="product-discount-img" alt="" />
-                        <div className='view-image'>
-                            <img src={product.imageURL} alt='' className='product-info-img'/>
-                        </div>
-                        <div className='product-thumb'>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        
-                    </div>
-                    <div className='product-info-right-block'>
-                        <div className='prod-name'>
-                            <p>{product.name}</p>
-                            <span className='prod-name-rating'><i class="fas fa-star prod-name-star"></i>{product.rating} <i className='stroke'>|</i> <a href="#">25 Reviews</a></span>
-                            <p><a href="#">iStore ZA</a></p>
-                        </div>
+                        <div className='product-info-container'>
                         <div>
-                            <p>Product code: 194252211533</p>
-                        </div>
+                            <img src={productdiscountimg} className="product-discount-img" alt="" />
+                            <div className='view-image'>
+                                <img src={product.imageURL} alt='' className='product-info-img'/>
+                            </div>
+                            <div className='product-thumb'>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
                             
-                        <div>
-                            <p>About product</p>
-                            <p>attentionThe mobile phone does not support the telecom CDMA network. 
-                                (E.g. U.S., Sprint, and Verizon operators)Due to the difference in light, 
-                                the actual color of the phone may be slightly different from the screen and pictures. 
-                                The color name is only used to distinguish each SKU. Please understand that</p>
                         </div>
-                        <div>
-                            <div className='product-tag'>
-                                <p>About product</p>  
-                                <p>BRAND</p>   
-                                <p>PRODUCT NAME</p>   
-                                <p>COLOR</p>   
-                                <p>SKU</p>   
-                                <p>TAGS</p>   
+                        <div className='product-info-right-block'>
+                            <div className='prod-name'>
+                                <p>{product.name}</p>
+                                <span className='prod-name-rating'><i class="fas fa-star prod-name-star"></i>{product.rating} <i className='stroke'>|</i> <a href="#">25 Reviews</a></span>
+                                <p><a href="#">iStore ZA</a></p>
                             </div>
-                            <div className='product-info-price'>
-                                <span>
-                                    <h1>R {product.price}</h1>
-                                    <h3 className='crossed-out'>R48 999.99</h3>
-                                </span>
-                                <i class="far fa-heart fav"></i>
-                                <button className='add-cart'onClick={()=> addToCart(product)}>Add to cart</button>
+                            <div>
+                                <p>Product code: 194252211533</p>
+                            </div>
+                                
+                            <div>
+                                <p>About product</p>
+                                <p>attentionThe mobile phone does not support the telecom CDMA network. 
+                                    (E.g. U.S., Sprint, and Verizon operators)Due to the difference in light, 
+                                    the actual color of the phone may be slightly different from the screen and pictures. 
+                                    The color name is only used to distinguish each SKU. Please understand that</p>
+                            </div>
+                            <div>
+                                <div className='product-tag'>
+                                    <p>About product</p>  
+                                    <p>BRAND</p>   
+                                    <p>PRODUCT NAME</p>   
+                                    <p>COLOR</p>   
+                                    <p>SKU</p>   
+                                    <p>TAGS</p>   
+                                </div>
+                                <div className='product-info-price'>
+                                    <span>
+                                        <h1>R {product.price}</h1>
+                                        <h3 className='crossed-out'>R48 999.99</h3>
+                                    </span>
+                                    <i class="far fa-heart fav"></i>
+                                    <button className='add-cart'onClick={()=> addToCart(product)}>Add to cart</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    </div>
-                    <div className='recomended-prod'>
-                    <motion.div className='essentials carousel' ref={carousel} whileTap={{cursor:"grabbing"}}>
-                            {/* <button onClick={addProductsData}>add data</button> */}
-                            <motion.div className='inner-carousel recommended-carousel' drag="x" dragConstraints={{right : 0, left: -width}}>
-                                {products.map((product, i) =>{
-                                    return <motion.div key={i}  className='recomended-details'>
-                                        <motion.div onClick={() => {
-                                            navigate(`/productinfo/${product.id}`)
-                                        }}>
-                                            <img src={product.imageURL} alt="" className='product-img'/>
-                                            <i class="far fa-heart item-fav"></i>
-                                            <h3>{product.name}</h3>
-                                            <b>R {product.price}</b>
-                                            <p className='initial-price'>R1234</p>
-                                            <div className='discount'>
-                                            </div>
-                                            <p><i className="fas fa-star"></i><span>{product.rating}</span></p>
+                        </div>
+                        <div className='recomended-prod'>
+                            <h1 className='recomended-header-text'>You might like these</h1>
+                        <motion.div className='essentials carousel' ref={carousel} whileTap={{cursor:"grabbing"}}>
+                                {/* <button onClick={addProductsData}>add data</button> */}
+                                <motion.div className='inner-carousel recommended-carousel' drag="x" dragConstraints={{right : 0, left: - 825}}>
+                                    {products.map((product, i) =>{
+                                        return <motion.div key={i}  className='recomended-details'>
+                                            <motion.div onClick={() => {
+                                                navigate(`/productinfo/${product.id}`)
+                                            }}>
+                                                <img src={product.imageURL} alt="" className='product-img'/>
+                                                <i class="far fa-heart item-fav"></i>
+                                                <h3>{product.name}</h3>
+                                                <b>R {product.price}</b>
+                                                <p className='initial-price'>R1234</p>
+                                                <div className='discount'>
+                                                </div>
+                                                <p><i className="fas fa-star"></i><span>{product.rating}</span></p>
+                                            </motion.div>
                                         </motion.div>
-                                    </motion.div>
-                                })}
+                                    })}
+                                </motion.div>
                             </motion.div>
-                        </motion.div>
+                        </div>
                     </div>
-                </div>
-                
-            </div>)}
+                    
+                </div>)}
+            </div>
         </Layout>
     )
 }

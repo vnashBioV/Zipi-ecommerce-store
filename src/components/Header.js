@@ -44,7 +44,7 @@ export default function Header() {
                         <Link className="nav-link" to="/cart"><img src={carticon} alt="" /><p className='cartcountervar'>{cartItems.length}</p></Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link login-btn" to="/">Login</Link>
+                        <Link className="nav-link login-btn" to="/register">Login</Link>
                     </li>
                 </ul>
             </div>

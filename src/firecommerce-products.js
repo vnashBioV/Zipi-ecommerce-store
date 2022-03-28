@@ -50,4 +50,28 @@ export const fireproducts = [
         "imageURL":"https://d-themes.com/angular/molla/server/uploads/product_5_1_610833d99f.jpg",
         "rating": 2
     },
+    {
+        "price": "240",
+        "description": "Morbi purus libero, faucibus adipiscing, commodo quis, gravida",
+        "name": "Home Smart Speaker with Google Assistant",
+        "category":"electronics",
+        "imageURL":"https://d-themes.com/angular/molla/server/uploads/product_11_1_406aa04e7f.jpg",
+        "rating": 5
+    },
+    {
+        "price": "210",
+        "description": "Morbi purus libero, faucibus adipiscing, commodo quis, gravida",
+        "name": "Block Side Table/Trolley",
+        "category":"electronics",
+        "imageURL":"https://d-themes.com/angular/molla/server/uploads/product_2_1_5762ebbcfa.jpg",
+        "rating": 2.8
+    },
+    {
+        "price": "199",
+        "description": "Morbi purus libero, faucibus adipiscing, commodo quis, gravida",
+        "name": "Block Side Table/Trolley",
+        "category":"electronics",
+        "imageURL":"https://d-themes.com/angular/molla/server/uploads/product_15_1_3159f60735.jpg",
+        "rating": 4
+    },
 ]

@@ -8,6 +8,8 @@
     justify-content: space-evenly;
     align-items: center;
     overflow: hidden;
+    width: 1487px;
+    position: relative;
 }
 .on-sale > p{
     padding: 10px 20px 0;
@@ -34,15 +36,18 @@
     position: absolute;
     top: 4%;
     left: 86%;
+    width: 17px;
+    height: 14px;
 }
 .initial-price{
-    font-size: 12px;
+    font-size: 10px;
     margin: 0;
-    padding:0;
+    padding: 0;
     text-decoration: line-through;
+    color: #959595;
 }
 .on-sale{
-    height: 324px;
+    height: 305px;
 }
 .discount{
     position: absolute;
@@ -209,4 +214,38 @@
 .carousel{
     cursor: grab;
     overflow: hidden;
+    position: relative;
+    transition: 3s all;
+    left: 0%;
+}
+.corouselMove{
+    left: -50%;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-select: none;
+    /* pointer-events: none; */
+}
+.carouselBtn{
+    position: absolute;
+    top: 46%;
+    right: -1.4%;
+    border-radius: 100%;
+    background: #ffe200;
+    border: none;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-container{
+    position: relative;
+}
+.carousel-btn-click{
+    font-size: 12px;
+}
+.chev{
+    font-size: 12px;
 }
